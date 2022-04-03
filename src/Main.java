@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         Call_Center center = new Call_Center();
 
-        new Thread(null, center::call, "Звонок №").start();
+        new Thread(null, center::call, "Поток АТС").start();
 
         for (int i = 0; i <= EMPLOYEES; i++) {
             new Thread(null, center::takingCall, "Оператор №" + i).start();
