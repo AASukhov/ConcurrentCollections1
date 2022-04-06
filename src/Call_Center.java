@@ -26,7 +26,13 @@ public class Call_Center {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("Оператор " + Thread.currentThread().getName() + " ответил на звонок " + phoneCalls.poll());
+            if (phoneCalls.peek() != null) {
+                System.out.println("Оператор " + Thread.currentThread().getName() + " ответил на звонок " + phoneCalls.poll());
+            } else {
+                Thread.currentThread().interrupt();
+                System.out.println("Оператор прекратил свою работу, звонки кончились");
+            }
+
         }
     }
 
